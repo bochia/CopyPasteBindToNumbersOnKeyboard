@@ -1,16 +1,20 @@
 from time import sleep
 import keyboard
+import pyperclip
 
 def SaveCopiedTextToList(copy_bind_values, key, value):
+    keyboard.press_and_release("ctrl+c")
+    value = pyperclip.paste()
     copy_bind_values[key] = value
 
-def PrintValue(copy_bind_pairs, key):
-    # print("adfadfasdf")
-    print(copy_bind_pairs[key])
+def PasteValue(copy_bind_pairs, key):
+    # print(copy_bind_pairs[key])
+    pyperclip.copy(copy_bind_pairs[key])
+    keyboard.press_and_release("ctrl+v")
 
 def CreateHotKey(copy_bind_pairs, numberKey):
     keyboard.add_hotkey(f"ctrl+c+{numberKey}", SaveCopiedTextToList, args=(copy_bind_pairs, numberKey, f"copy bind value {numberKey}")) #need to replace this with copied text.
-    keyboard.add_hotkey(f"ctrl+b+{numberKey}", PrintValue, args=(copy_bind_pairs, numberKey))
+    keyboard.add_hotkey(f"ctrl+b+{numberKey}", PasteValue, args=(copy_bind_pairs, numberKey))
 
 
 def CreateHotKeys():
