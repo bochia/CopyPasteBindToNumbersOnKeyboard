@@ -11,4 +11,4 @@ Clone repository
 
 ### How to Use:
 - Save/bind text to number with ctrl + c + {any number key 0-9}
-- Paste saved text using ctrl + b + {any number key 0-9}
+- Paste text saved to number using ctrl + b + {respective number key 0-9}
