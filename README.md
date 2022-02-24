@@ -11,4 +11,6 @@ Simple script that allows user to save copied text to numbers on keyboard. User 
 - Keyboard with numbers 0-9
 
 ### Installation:
-Clone repository
+1.) Clone repository
+2.) Go to "dist" folder in cloned repo.
+3.) Run CopyPasteBind.exe file.
