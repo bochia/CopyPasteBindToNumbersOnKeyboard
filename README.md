@@ -1,12 +1,12 @@
 # CopyPasteBindPython
 Simple script that allows user to save copied text to numbers on keyboard. User can then use hotkey to paste saved values later on. 
 
-###Prerequisites:
+##Prerequisites:
 -Windows OS
 -Python 3.6.5 or similar.
 -Keyboard with numbers 0-9
 
-###Installation:
+##Installation:
 Clone repository
 
 ###How to Use:
