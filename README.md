@@ -1,4 +1,4 @@
-# CopyPasteBindPython
+# CopyPasteBindToNumbersOnKeyboard
 Simple script that allows user to save copied text to numbers on keyboard. User can then use hotkey to paste saved values later on. 
 
 ### Prerequisites:
