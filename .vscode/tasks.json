@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build deployment exe file",
+            "label": "Build Deployment EXE File",
             "type": "shell",
             "command": "pyinstaller --onefile --noconsole CopyPasteBind.py",
             "problemMatcher": [],
