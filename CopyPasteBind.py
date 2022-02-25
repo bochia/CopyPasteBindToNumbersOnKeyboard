@@ -4,7 +4,7 @@ import pyperclip
 import easygui
 import sys
 
-def SaveCopiedTextToList(copy_bind_values, key):
+def BindCopiedTextToNumberKey(copy_bind_values, key):
     keyboard.press_and_release("ctrl+c")
     value = pyperclip.paste()
     copy_bind_values[key] = value
@@ -14,7 +14,7 @@ def PasteValue(copy_bind_pairs, key):
     keyboard.press_and_release("ctrl+v")
 
 def CreateHotKey(copy_bind_pairs, numberKey):
-    keyboard.add_hotkey(f"ctrl+c+{numberKey}", SaveCopiedTextToList, args=(copy_bind_pairs, numberKey))
+    keyboard.add_hotkey(f"ctrl+c+{numberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey))
     keyboard.add_hotkey(f"ctrl+b+{numberKey}", PasteValue, args=(copy_bind_pairs, numberKey))
 
 def CreateHotKeys():
