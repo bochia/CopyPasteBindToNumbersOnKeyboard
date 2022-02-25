@@ -9,13 +9,13 @@ def BindCopiedTextToNumberKey(copy_bind_values, key):
     value = pyperclip.paste()
     copy_bind_values[key] = value
 
-def PasteValue(copy_bind_pairs, key):
+def PasteBindedValue(copy_bind_pairs, key):
     pyperclip.copy(copy_bind_pairs[key])
     keyboard.press_and_release("ctrl+v")
 
 def CreateHotKey(copy_bind_pairs, numberKey):
     keyboard.add_hotkey(f"ctrl+c+{numberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey))
-    keyboard.add_hotkey(f"ctrl+b+{numberKey}", PasteValue, args=(copy_bind_pairs, numberKey))
+    keyboard.add_hotkey(f"ctrl+b+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
 
 def CreateHotKeys():
 

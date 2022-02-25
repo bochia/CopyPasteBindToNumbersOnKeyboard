@@ -6,7 +6,12 @@
         {
             "label": "build deployment exe file",
             "type": "shell",
-            "command": "pyinstaller --onefile --noconsole CopyPasteBind.py"
+            "command": "pyinstaller --onefile --noconsole CopyPasteBind.py",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
