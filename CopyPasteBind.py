@@ -42,7 +42,7 @@ appOpen = True
 
 while appOpen:  
     try:
-        msg = "Do you want to continue using the copy/paste bind hotkeys?"
+        msg = "This window must stay open to use the copybindpaste feature. Do you want to continue using the copy/paste bind hotkeys?"
         title = "Please Confirm"
         if easygui.ccbox(msg, title):  # show a Continue/Cancel dialog
             appOpen = True 
