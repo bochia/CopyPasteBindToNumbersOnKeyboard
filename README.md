@@ -3,10 +3,6 @@ Simple script that allows user to save copied text to numbers on keyboard. User 
 
 ![CopyPasteBindScreenshot](images/CopyPasteBindScreenshot.png)
 
-### How to Use:
-- Save/bind text to number with ctrl + c + {any number key 0-9}
-- Paste text binded to number using ctrl + shift + {respective number key 0-9}
-
 ### Prerequisites:
 - Python 3.6.5 or similar. (So Windows/Mac/Linux can edit source code)
 - Compiled exe file only can be run on WindowsOS, but can use source code to compile for different environment if desired.
