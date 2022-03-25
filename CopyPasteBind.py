@@ -48,7 +48,7 @@ while appOpen:
         msg += "Paste Binded Text: ctrl + shift + {number key}\n\n"
         msg += "IMPORTANT:\n"
         msg += "----------\n"
-        msg += "This window must stay open to use the CopyBindPaste feature but feel free to minimize it."
+        msg += "This window must stay open to use the CopyPasteBind feature but feel free to minimize it."
         
         title = "Please Confirm"
         if easygui.msgbox(msg=msg, title="Copy Paste Bind Running...", ok_button="Stop Program"):  # show a Continue/Cancel dialog
