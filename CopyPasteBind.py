@@ -1,9 +1,11 @@
+from logging import exception
 from time import sleep
 import keyboard
 import pyperclip
 import easygui
 import sys
 
+########### Functions ########### 
 def BindCopiedTextToNumberKey(copy_bind_values, key):
     keyboard.press_and_release("ctrl+c")
     value = pyperclip.paste()
@@ -15,7 +17,7 @@ def PasteBindedValue(copy_bind_pairs, key):
 
 def CreateHotKey(copy_bind_pairs, numberKey):
     keyboard.add_hotkey(f"ctrl+c+{numberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey))
-    keyboard.add_hotkey(f"ctrl+shift+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
+    keyboard.add_hotkey(f"ctrl+b+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
 
 def CreateHotKeys():
 
@@ -35,29 +37,20 @@ def CreateHotKeys():
     for numberKey in range(0,9):
         CreateHotKey(copy_bind_pairs, numberKey)
 
-#Main
+########### Main Program ########### 
 CreateHotKeys()
 
-appOpen = True
+try:
+    msg = "HOW TO USE:\n"
+    msg += "-----------\n\n"
+    msg += "Bind Text To Number: ctrl + c + {number key}" + "\n\n"
+    msg += "Paste Binded Text: ctrl + b + {number key}\n\n"
+    msg += "IMPORTANT:\n"
+    msg += "----------\n"
+    msg += "This window must stay open to use the CopyPasteBind feature but feel free to minimize it."
 
-while appOpen:  
-    try:
-        msg = "HOW TO USE:\n"
-        msg += "-----------\n\n"
-        msg += "Bind Text To Number: ctrl + c + {number key}" + "\n\n"
-        msg += "Paste Binded Text: ctrl + shift + {number key}\n\n"
-        msg += "IMPORTANT:\n"
-        msg += "----------\n"
-        msg += "This window must stay open to use the CopyPasteBind feature but feel free to minimize it."
+    easygui.msgbox(msg=msg, title="Copy Paste Bind Running...", ok_button="Stop Program")
+    sys.exit(0)
         
-        title = "Please Confirm"
-        if easygui.msgbox(msg=msg, title="Copy Paste Bind Running...", ok_button="Stop Program"):  # show a Continue/Cancel dialog
-            #easygui.ccbox(msg=msg, title=title, default_choice="Reset", cancel_choice="Close"):  # show a Continue/Cancel dialog
-            appOpen = False 
-            sys.exit(0)
-        else: #close button in top right corner was pressed
-            appOpen = False
-            sys.exit(0)
-            
-    except:
-        break
+except Exception as e:
+    easygui.msgbox("Oops something went wrong...\n\nException:\n" + str(e))

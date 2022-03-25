@@ -1,9 +1,10 @@
 import keyboard
 from time import sleep
 
-# pressed = False
+def printText():
+    print("alt key pressed")
 
-# while(not pressed):
-#     print("printing...")
-#     sleep(1)
+keyboard.on_press_key("right shift", printText)
 
+while True:
+    sleep(2)
