@@ -55,6 +55,9 @@ while appOpen:
             #easygui.ccbox(msg=msg, title=title, default_choice="Reset", cancel_choice="Close"):  # show a Continue/Cancel dialog
             appOpen = False 
             sys.exit(0)
+        else: #close button in top right corner was pressed
+            appOpen = False
+            sys.exit(0)
             
     except:
         break
