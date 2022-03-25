@@ -15,7 +15,7 @@ def PasteBindedValue(copy_bind_pairs, key):
 
 def CreateHotKey(copy_bind_pairs, numberKey):
     keyboard.add_hotkey(f"ctrl+c+{numberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey))
-    keyboard.add_hotkey(f"ctrl+b+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
+    keyboard.add_hotkey(f"ctrl+shift+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
 
 def CreateHotKeys():
 
@@ -42,13 +42,19 @@ appOpen = True
 
 while appOpen:  
     try:
-        msg = "This window must stay open to use the copybindpaste feature. Do you want to continue using the copy/paste bind hotkeys?"
+        msg = "HOW TO USE:\n"
+        msg += "-----------\n\n"
+        msg += "Bind Text To Number: ctrl + c + {number key}" + "\n\n"
+        msg += "Paste Binded Text: ctrl + shift + {number key}\n\n"
+        msg += "IMPORTANT:\n"
+        msg += "----------\n"
+        msg += "This window must stay open to use the CopyBindPaste feature but feel free to minimize it."
+        
         title = "Please Confirm"
-        if easygui.ccbox(msg, title):  # show a Continue/Cancel dialog
-            appOpen = True 
-        else:  
-            # user chose Cancel
-            appOpen = False
+        if easygui.msgbox(msg=msg, title=title, ok_button="Stop Program"):  # show a Continue/Cancel dialog
+            #easygui.ccbox(msg=msg, title=title, default_choice="Reset", cancel_choice="Close"):  # show a Continue/Cancel dialog
+            appOpen = False 
             sys.exit(0)
+            
     except:
         break
