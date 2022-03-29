@@ -1,0 +1,84 @@
+[
+  {
+    "key": "ctrl+1",
+    "label": "disable index 1",
+    "action": "disable",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "sites": "",
+    "sitesArray": [
+      ""
+    ],
+    "key": "ctrl+2",
+    "label": "disable index 2",
+    "action": "disable"
+  },
+  {
+    "key": "ctrl+3",
+    "label": "disable index 3",
+    "action": "disable",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+4",
+    "label": "disable index 4",
+    "action": "disable",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+5",
+    "action": "disable",
+    "label": "disable index 5",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+6 ",
+    "label": "disable index 6",
+    "action": "disable",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+7",
+    "label": "disable index 7",
+    "action": "disable",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+8",
+    "label": "disable index 8",
+    "action": "disable",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+9",
+    "label": "disable index 9",
+    "action": "disable",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {}
+]
