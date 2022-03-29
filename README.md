@@ -17,6 +17,7 @@ Simple script that allows user to save copied text to numbers on keyboard. User 
 
 ### Disabiling Application Shortcuts That Can Interfere:
 - Google Chrome has keyboard shortscuts for quickly moving between tabs by using ctrl + {number key}. To avoid this interfereing with the program we'll want to disable these. To disable these we need to install the "ShortKeys" chrome extension. Steps:
+
   1.) Right-click the "ShortKeys" chrome extension.
   2.) Select "Options".
   3.) Go to the "Import" tab.
