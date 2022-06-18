@@ -8,13 +8,13 @@ import sys
 
 
 ########### Functions ########### 
-def BindCopiedTextToNumberKey(copy_bind_values, key):
+def BindCopiedTextToNumberKey(copy_bind_values, numberKey):
     keyboard.press_and_release("ctrl+c")
     value = pyperclip.paste()
-    copy_bind_values[key] = value
+    copy_bind_values[numberKey] = value
 
-def PasteBindedValue(copy_bind_pairs, key):
-    pyperclip.copy(copy_bind_pairs[key])
+def PasteBindedValue(copy_bind_pairs, numberKey):
+    pyperclip.copy(copy_bind_pairs[numberKey])
     keyboard.press_and_release("ctrl+v")
 
 def CreateHotKey(copy_bind_pairs, numberKey):
