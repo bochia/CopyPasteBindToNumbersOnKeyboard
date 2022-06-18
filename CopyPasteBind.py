@@ -18,6 +18,7 @@ def PasteBindedValue(copy_bind_pairs, key):
 def CreateHotKey(copy_bind_pairs, numberKey):
     keyboard.add_hotkey(f"ctrl+c+{numberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey))
     keyboard.add_hotkey(f"ctrl+b+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
+    keyboard.add_hotkey(f"ctrl+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
 
 def CreateHotKeys():
 
