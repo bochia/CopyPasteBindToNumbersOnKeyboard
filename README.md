@@ -15,8 +15,8 @@ Simple desktop app that allows user to save copied text to numbers on keyboard. 
 
 3.) Run CopyPasteBind.exe file.
 
-### Disabiling Application Shortcuts That Can Interfere w/ The Program:
-- Google Chrome has keyboard shortscuts for quickly moving between tabs by using ctrl + {number key}. To avoid this interfereing with the program we'll want to disable these, or move tab we want to work with to its own window. To disable these we need to install the "ShortKeys" chrome extension. Steps:
+### Disabiling Application Shortcuts That Can Interfere w/ The Program:;
+- Google Chrome has keyboard shortscuts for quickly moving between tabs by using ctrl + {number key}. To avoid this interfereing with the program we'll need to: 1.) disable these, OR 2.) move the tab we want to work with to its own window - this is much simpler. To disable the default browser hotkeys we need to install the "ShortKeys" chrome extension. Steps:
 
   1.) Right-click the "ShortKeys" chrome extension.
   
