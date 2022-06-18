@@ -4,7 +4,7 @@ Simple desktop app that allows user to save copied text to numbers on keyboard. 
 ![CopyPasteBindScreenshot](images/CopyPasteBindScreenshot.png)
 
 ### Prerequisites:
-- Python 3.6.5 or similar. (So Windows/Mac/Linux can edit source code)
+- Python 3.6.5 or similar. (So Windows/Mac/Linux can edit source code, but python doesn't need to be installed to run pre built executable.)
 - WindowsOS 10 or later.
 - Keyboard with numbers 0-9.
 
