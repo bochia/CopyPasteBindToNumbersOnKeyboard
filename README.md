@@ -1,5 +1,5 @@
 # CopyPasteBindToNumbersOnKeyboard
-Simple app that allows user to save copied text to numbers on keyboard. User can then use hotkey to paste saved values later on. 
+Simple desktop app that allows user to save copied text to numbers on keyboard. User can then use hotkey to paste saved values later on. 
 
 ![CopyPasteBindScreenshot](images/CopyPasteBindScreenshot.png)
 
