@@ -46,6 +46,7 @@ try:
     msg += "-----------\n\n"
     msg += "Bind Text To Number: ctrl + c + {number key}" + "\n\n"
     msg += "Paste Binded Text: ctrl + b + {number key}\n\n"
+    msg += "Paste Binded Text: ctrl + {number key}\n\n"
     msg += "IMPORTANT:\n"
     msg += "----------\n"
     msg += "This window must stay open to use the CopyPasteBind feature but feel free to minimize it."
