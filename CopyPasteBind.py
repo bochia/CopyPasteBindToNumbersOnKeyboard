@@ -5,6 +5,7 @@ import keyboard
 import pyperclip
 import easygui
 import sys
+import Neutron
 
 
 ########### Functions ########### 
@@ -43,6 +44,11 @@ def CreateHotKeys():
     for numberKey in range(0,9):
         CreateHotKey(copy_bind_pairs, numberKey)      
 
+
+def setName():
+    name = win.getElementById("inputName").value
+    win.getElementById("title").innerHTML = "Hello: " + name
+
 ########### Main Program ########### 
 CreateHotKeys()
 
@@ -60,8 +66,29 @@ try:
     msg += "----------\n"
     msg += "This window must stay open to use the CopyPasteBind functionality, but feel free to minimize it."
 
-    easygui.msgbox(msg=msg, title="Copy Paste Bind Running...", ok_button="Stop Program")
-    sys.exit(0)
-        
+    # easygui.msgbox(msg=msg, title="Copy Paste Bind Running...", ok_button="Stop Program")
+    # sys.exit(0)
+    
+    win = Neutron.Window("Example")
+
+
+    win.display(f"""
+
+    <!DOCTYPE html>
+    <html>
+    <head lang="en">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1 id="title">Hello: </h1>
+        <input id="inputName">
+        <button id="submitName" onclick="{Neutron.event(setName)}">Submit</button>
+        <!-- OR-->
+        {Neutron.elements.Button(win, content="Submit", onclick=Neutron.event(setName))}
+    </body>
+    </html>
+    """)
+    win.show()
+
 except Exception as e:
     easygui.msgbox("Oops something went wrong...\n\nException:\n" + str(e))
