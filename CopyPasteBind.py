@@ -7,7 +7,6 @@ import easygui
 import sys
 
 
-
 ########### Functions ########### 
 def BindCopiedTextToNumberKey(copy_bind_values, key):
     keyboard.press_and_release("ctrl+c")
@@ -29,6 +28,7 @@ def CreateHotKey(copy_bind_pairs, numberKey):
 
 def CreateHotKeys():
 
+    #dictionary used to save values for copy binded text.
     copy_bind_pairs = {
         0:"",
         1:"",
@@ -49,6 +49,7 @@ def CreateHotKeys():
 CreateHotKeys()
 
 try:
+    # Create instructions to display in dialog box.
     msg = "HOW TO USE:\n"
     msg += "-----------\n\n"
     msg += "Bind Text To Number - highlight the text you want to copy and then use one of the hotkeys below.\n\n"
