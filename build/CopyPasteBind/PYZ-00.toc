@@ -536,6 +536,9 @@
   ('queue',
    'c:\\users\\john\\appdata\\local\\programs\\python\\python36\\lib\\queue.py',
    'PYMODULE'),
+  ('CopyBindPasteConstants',
+   'C:\\Users\\John\\source\\repos\\CopyPasteBindToNumbersOnKeyboard\\CopyBindPasteConstants.py',
+   'PYMODULE'),
   ('logging',
    'c:\\users\\john\\appdata\\local\\programs\\python\\python36\\lib\\logging\\__init__.py',
    'PYMODULE')])
