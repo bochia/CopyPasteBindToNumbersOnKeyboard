@@ -21,8 +21,6 @@ def CreateHotKey(copy_bind_pairs, numberKey):
     keyboard.add_hotkey(f"ctrl+c+{numberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey))
     keyboard.add_hotkey(f"ctrl+b+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
     keyboard.add_hotkey(f"ctrl+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
-
-    #Create extra hotkeys that can be used by a programmable mouse - setup mouse buttons to immitate function keys.
     functionNumberKey = numberKey + DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS
     keyboard.add_hotkey(f"f{functionNumberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey))
 
