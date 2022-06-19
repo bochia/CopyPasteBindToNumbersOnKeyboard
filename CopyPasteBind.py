@@ -64,10 +64,9 @@ try:
     
     win = Neutron.Window("Copy Paste Bind Running...",)
 
-    win.display(file="html\Window.html")
+    win.display(file="html\MainWindow.html")
 
     win.show()
-    win.hide()
 
      # easygui.msgbox(msg=msg, title="Copy Paste Bind Running...", ok_button="Stop Program")
     sys.exit(0)
