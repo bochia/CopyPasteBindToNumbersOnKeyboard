@@ -31,4 +31,4 @@ Simple desktop app that allows user to save copied text to numbers on keyboard. 
   6.) Congrats! The tab index shortcuts for chrome should now be disabled.
 
 ### Known Bugs:
-- Ctrl + arrow key can cause values to be copy pasted. This issue will be addressed in the next update.
+- Ctrl + arrow key can cause values to be copy pasted on accident. This issue will be addressed in the next update.
