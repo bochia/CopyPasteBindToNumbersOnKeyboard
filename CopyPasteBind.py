@@ -18,11 +18,10 @@ def PasteBindedValue(copy_bind_pairs, numberKey):
     keyboard.press_and_release("ctrl+v")
 
 def CreateHotKey(copy_bind_pairs, numberKey):
-    keyboard.add_hotkey(f"ctrl+c+{numberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey), suppress=True)
-    keyboard.add_hotkey(f"ctrl+b+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey), suppress=True)
-    keyboard.add_hotkey(f"ctrl+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey), suppress=True)
+    keyboard.add_hotkey(f"ctrl+c+{numberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey))
+    keyboard.add_hotkey(f"ctrl+b+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
     functionNumberKey = numberKey + DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS
-    keyboard.add_hotkey(f"f{functionNumberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey), suppress=True)
+    keyboard.add_hotkey(f"f{functionNumberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
 
 def CreateHotKeys():
 
@@ -52,10 +51,9 @@ try:
     msg += "-----------\n\n"
     msg += "Bind Text To Number - highlight the text you want to copy and then use one of the hotkeys below.\n\n"
     msg += " * ctrl + c + {number key}" + "\n\n"
-    msg += " * Use function keys fn13 - fn22 to bind text to numbers 0 - 9 respectively.\n\n"
     msg += "Paste Binded Text - use one of the hotkeys below.\n\n"
-    msg += " * ctrl + {number key}\n\n"
     msg += " * ctrl + b + {number key}\n\n"
+    msg += " * Use function keys fn13 - fn22 to paste text from numbers 0 - 9 respectively.\n\n"
     msg += "IMPORTANT:\n"
     msg += "----------\n"
     msg += "This window must stay open to use the CopyPasteBind functionality, but feel free to minimize it."
