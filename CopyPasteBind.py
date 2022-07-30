@@ -4,6 +4,7 @@ import pyperclip
 import easygui
 import sys
 import Neutron
+import os
 
 
 ########### Functions ########### 
@@ -50,6 +51,19 @@ def reset_values():
         copy_bind_pairs[numKey] = EMPTY_STR
         win.getElementById(f"{BINDED_VALUE_TEXTBOX_PREFIX}{numKey}").innerHTML = EMPTY_STR
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        if sys._MEIPASS2 != EMPTY_STR:
+            base_path = sys._MEIPASS
+        else:
+            print("made it here")
+            base_path = os.getcwd()
+            return os.path.join(base_path, relative_path)
+    except Exception:
+        base_path = os.path.abspath(".")
+        return os.path.join(base_path, relative_path)
+
 def show_page(page):
     page.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK)
 
@@ -81,9 +95,24 @@ copy_bind_pairs = {
 CreateHotKeys(copy_bind_pairs)
 
 try:
-    win = Neutron.Window("Copy Paste Bind Running...", css="css\style.css")
+    css_filename = "style.css"
+    css_filepath = EMPTY_STR
+    html_filename = "MainWindow.html"
+    html_filepath = EMPTY_STR
 
-    win.display(file="html\MainWindow.html")
+    css_filepath = f"css\{css_filename}"
+    html_filepath = f"html\{html_filename}"
+
+    css_filepath = resource_path(css_filepath)
+    html_filepath = resource_path(html_filepath)
+
+    print("mdae it here asdfasdf")
+    print(css_filepath)
+    print(html_filepath)
+
+    win = Neutron.Window("Copy Paste Bind Running...", css=css_filepath)
+
+    win.display(file=html_filepath)
 
     win.getElementById("mainMenuButton").addEventListener("click", Neutron.event(openPage_main))
     win.getElementById("howToUsePageMenuButton").addEventListener("click", Neutron.event(openPage_how_to_use))
