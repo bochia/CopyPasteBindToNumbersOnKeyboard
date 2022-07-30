@@ -1,4 +1,4 @@
-from CopyBindPasteConstants import CONFIGURATION_PAGE_ID, CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK, CSS_DISPLAY_NONE, DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS, HOW_TO_USE_PAGE_ID, MAIN_PAGE_ID
+from CopyBindPasteConstants import BINDED_VALUE_TEXTBOX_PREFIX, CONFIGURATION_PAGE_ID, CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK, CSS_DISPLAY_NONE, DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS, HOW_TO_USE_PAGE_ID, MAIN_PAGE_ID
 import keyboard
 import pyperclip
 import easygui
@@ -8,9 +8,13 @@ import Neutron
 
 ########### Functions ########### 
 def BindCopiedTextToNumberKey(copy_bind_values, numberKey):
+    #copy value from clipboard and bind to number
     keyboard.press_and_release("ctrl+c")
     value = pyperclip.paste()
     copy_bind_values[numberKey] = value
+
+    # update UI
+    win.getElementById(f"{BINDED_VALUE_TEXTBOX_PREFIX}{numberKey}").innerHTML_set(value)
 
 def CreateHotKey(copy_bind_pairs, numberKey):
     keyboard.add_hotkey(f"ctrl+c+{numberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey))
@@ -34,7 +38,7 @@ def CreateHotKeys():
         9:""
     }
 
-    for numberKey in range(0,9):
+    for numberKey in range(0,10):
         CreateHotKey(copy_bind_pairs, numberKey)  
 
 def hide_page(page):
@@ -67,6 +71,9 @@ def show_page_and_hide_all_others(page_Id):
     for page_Id_to_hide in page_Ids_to_hide:
         page = win.getElementById(page_Id_to_hide)
         hide_page(page)
+
+def DoThis():
+    print("do this is pressed")
 
 ########### Main Program ########### 
 CreateHotKeys()
