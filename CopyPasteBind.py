@@ -1,4 +1,4 @@
-from CopyBindPasteConstants import BINDED_VALUE_TEXTBOX_PREFIX, CONFIGURATION_PAGE_ID, CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK, CSS_DISPLAY_NONE, DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS, HOW_TO_USE_PAGE_ID, MAIN_PAGE_ID
+from CopyBindPasteConstants import BINDED_VALUE_TEXTBOX_PREFIX, CONFIGURATION_PAGE_ID, CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK, CSS_DISPLAY_NONE, DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS, EMPTY_STR, HOW_TO_USE_PAGE_ID, MAIN_PAGE_ID
 import keyboard
 import pyperclip
 import easygui
@@ -22,22 +22,7 @@ def CreateHotKey(copy_bind_pairs, numberKey):
     functionNumberKey = numberKey + DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS
     keyboard.add_hotkey(f"f{functionNumberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
 
-def CreateHotKeys():
-
-    #dictionary used to save values for copy binded text.
-    copy_bind_pairs = {
-        0:"",
-        1:"",
-        2:"",
-        3:"",
-        4:"",
-        5:"",
-        6:"",
-        7:"",
-        8:"",
-        9:""
-    }
-
+def CreateHotKeys(copy_bind_pairs):
     for numberKey in range(0,10):
         CreateHotKey(copy_bind_pairs, numberKey)  
 
@@ -60,6 +45,11 @@ def PasteBindedValue(copy_bind_pairs, numberKey):
     pyperclip.copy(copy_bind_pairs[numberKey])
     keyboard.press_and_release("ctrl+v")    
 
+def reset_values():
+    for numKey in range(0, 10):
+        copy_bind_pairs[numKey] = EMPTY_STR
+        win.getElementById(f"{BINDED_VALUE_TEXTBOX_PREFIX}{numKey}").innerHTML = EMPTY_STR
+
 def show_page(page):
     page.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK)
 
@@ -72,11 +62,23 @@ def show_page_and_hide_all_others(page_Id):
         page = win.getElementById(page_Id_to_hide)
         hide_page(page)
 
-def DoThis():
-    print("do this is pressed")
-
 ########### Main Program ########### 
-CreateHotKeys()
+
+# dictionary used to save values for copy binded text.
+copy_bind_pairs = {
+    0:EMPTY_STR,
+    1:EMPTY_STR,
+    2:EMPTY_STR,
+    3:EMPTY_STR,
+    4:EMPTY_STR,
+    5:EMPTY_STR,
+    6:EMPTY_STR,
+    7:EMPTY_STR,
+    8:EMPTY_STR,
+    9:EMPTY_STR
+}
+
+CreateHotKeys(copy_bind_pairs)
 
 try:
     win = Neutron.Window("Copy Paste Bind Running...", css="css\style.css")
@@ -86,6 +88,7 @@ try:
     win.getElementById("mainMenuButton").addEventListener("click", Neutron.event(openPage_main))
     win.getElementById("howToUsePageMenuButton").addEventListener("click", Neutron.event(openPage_how_to_use))
     win.getElementById("configurationMenuButton").addEventListener("click", Neutron.event(openPage_configuration))
+    win.getElementById("resetValues").addEventListener("click", Neutron.event(reset_values))
 
     mainPage = win.getElementById(MAIN_PAGE_ID)
     howToUsePage = win.getElementById(HOW_TO_USE_PAGE_ID)
