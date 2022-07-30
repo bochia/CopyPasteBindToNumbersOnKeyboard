@@ -14,7 +14,7 @@ def BindCopiedTextToNumberKey(copy_bind_values, numberKey):
     copy_bind_values[numberKey] = value
 
     # update UI
-    win.getElementById(f"{BINDED_VALUE_TEXTBOX_PREFIX}{numberKey}").innerHTML_set(value)
+    win.getElementById(f"{BINDED_VALUE_TEXTBOX_PREFIX}{numberKey}").innerHTML = value.replace('\n', ' ').replace('\r', '') # need to remove new line characters otherwise wont work.
 
 def CreateHotKey(copy_bind_pairs, numberKey):
     keyboard.add_hotkey(f"ctrl+c+{numberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey))
