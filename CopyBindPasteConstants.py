@@ -1,3 +1,14 @@
+# Number constants for program logic
 STARTING_FUNCTION_KEY_NUMBER = 13
 STARTING_KEYBOARD_NUMBER = 0
 DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS = STARTING_FUNCTION_KEY_NUMBER - STARTING_KEYBOARD_NUMBER
+
+# UI constants 
+MAIN_PAGE_ID = "mainPage"
+CONFIGURATION_PAGE_ID = "configurationPage"
+HOW_TO_USE_PAGE_ID = "howToUsePage"
+
+# CSS attributes & values
+CSS_STYLE_ATTRIBUTE = "STYLE"
+CSS_DISPLAY_NONE = "display: none" 
+CSS_DISPLAY_BLOCK = "display: block" # make visible

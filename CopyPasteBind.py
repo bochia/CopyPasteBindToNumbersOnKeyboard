@@ -1,12 +1,9 @@
-from logging import exception
-from time import sleep
-from CopyBindPasteConstants import DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS
+from CopyBindPasteConstants import CONFIGURATION_PAGE_ID, CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK, CSS_DISPLAY_NONE, DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS, HOW_TO_USE_PAGE_ID, MAIN_PAGE_ID
 import keyboard
 import pyperclip
 import easygui
 import sys
 import Neutron
-import os
 
 
 ########### Functions ########### 
@@ -40,6 +37,24 @@ def CreateHotKeys():
     for numberKey in range(0,9):
         CreateHotKey(copy_bind_pairs, numberKey)  
 
+def openPage_configuration():
+    mainPage.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_NONE)
+    howToUsePage.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_NONE)
+    configurationPage.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK)
+    print("Made it to openPage_configuration.")
+
+def openPage_how_to_use():
+    mainPage.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_NONE)
+    howToUsePage.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK)
+    configurationPage.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_NONE)
+    print("Made it to openPage_how_to_use")
+
+def openPage_main():
+    mainPage.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK)
+    howToUsePage.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_NONE)
+    configurationPage.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_NONE)
+    print("Made it to openPage_main.")
+
 def PasteBindedValue(copy_bind_pairs, numberKey):
     pyperclip.copy(copy_bind_pairs[numberKey])
     keyboard.press_and_release("ctrl+v")    
@@ -48,25 +63,20 @@ def PasteBindedValue(copy_bind_pairs, numberKey):
 CreateHotKeys()
 
 try:
-    # Create instructions to display in dialog box.
-    msg = "HOW TO USE:\n"
-    msg += "-----------\n\n"
-    msg += "Bind Text To Number - highlight the text you want to copy and then use one of the hotkeys below.\n\n"
-    msg += " * ctrl + c + {number key}" + "\n\n"
-    msg += "Paste Binded Text - use one of the hotkeys below.\n\n"
-    msg += " * ctrl + b + {number key}\n\n"
-    msg += " * Use function keys fn13 - fn22 to paste text from numbers 0 - 9 respectively.\n\n"
-    msg += "IMPORTANT:\n"
-    msg += "----------\n"
-    msg += "This window must stay open to use the CopyPasteBind functionality, but feel free to minimize it."
-    
-    win = Neutron.Window("Copy Paste Bind Running...",)
+    win = Neutron.Window("Copy Paste Bind Running...", css="css\style.css")
 
     win.display(file="html\MainWindow.html")
 
+    win.getElementById("mainMenuButton").addEventListener("click", Neutron.event(openPage_main))
+    win.getElementById("howToUsePageMenuButton").addEventListener("click", Neutron.event(openPage_how_to_use))
+    win.getElementById("configurationMenuButton").addEventListener("click", Neutron.event(openPage_configuration))
+
+    mainPage = win.getElementById(MAIN_PAGE_ID)
+    howToUsePage = win.getElementById(HOW_TO_USE_PAGE_ID)
+    configurationPage = win.getElementById(CONFIGURATION_PAGE_ID)
+    
     win.show()
 
-     # easygui.msgbox(msg=msg, title="Copy Paste Bind Running...", ok_button="Stop Program")
     sys.exit(0)
 
 except Exception as e:
