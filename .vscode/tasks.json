@@ -5,8 +5,9 @@
     "tasks": [
         {
             "label": "Build Deployment EXE File",
+            "detail": "Build executable for application and make sure it has the files it needs to run.",
             "type": "shell",
-            "command": "pyinstaller --onefile --noconsole CopyPasteBind.py",
+            "command": "./BuildAndPackageApplication.ps1",
             "problemMatcher": [],
             "group": {
                 "kind": "build",

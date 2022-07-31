@@ -1,0 +1,10 @@
+$currentDirectory = Get-Location
+
+$cssFolderPath = $currentDirectory + "\css\"
+# $htmlFolderPath = $currentDirectory + "\html\"
+# $distFolderPath = $currentDirectory + "\dist\"
+
+# Copy-Item $cssFolderPath -Destination $distFolderPath
+# Copy-Item $htmlFolderPath -Destination $distFolderPath
+
+# pyinstaller --onefile --noconsole CopyPasteBind.py --add-data="html\MainWindow.html;." --add-data="css\style.css;."

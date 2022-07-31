@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+   <meta charset="UTF-8">
+</head>
+
+<body>
+   <div class="tabs">
+      <button id="mainMenuButton" class="tablinks">Main</button>
+      <button id="configurationMenuButton" class="tablinks">Configuration</button>
+      <button id="howToUsePageMenuButton" class="tablinks">How To Use</button>
+   </div>
+
+   <div id="mainPage" class="tabcontent" style="display: block">
+      <h1>Binded Values:</h1>
+      <button id="resetValues">Reset Values</button>
+      <p>View values that are currently binded to number keys.</p>
+      <p>NOTE - dont copy text directly from within these textboxes, always use hotkeys to get text. These textareas are only for viewing - text has had newline characters removed.</p>
+      <div><span>0: </span><span><textarea id="bindValue0"></textarea></div>
+      <div><span>1: </span><span><textarea id="bindValue1"></textarea></div>
+      <div><span>2: </span><span><textarea id="bindValue2"></textarea></div>
+      <div><span>3: </span><span><textarea id="bindValue3"></textarea></div>
+      <div><span>4: </span><span><textarea id="bindValue4"></textarea></div>
+      <div><span>5: </span><span><textarea id="bindValue5"></textarea></div>
+      <div><span>6: </span><span><textarea id="bindValue6"></textarea></div>     
+      <div><span>7: </span><span><textarea id="bindValue7"></textarea></div>     
+      <div><span>8: </span><span><textarea id="bindValue8"></textarea></div>
+      <div><span>9: </span><span><textarea id="bindValue9"></textarea></div>  
+   </div>
+
+   <div id="configurationPage" class="tabcontent" style="display: none">
+      <br>
+      Configuration page contents.
+   </div>
+
+   <div id="howToUsePage" class="tabcontent" style="display: none">
+      <h1>HOW TO USE:</h1>
+      <p>Bind Text To Number - highlight the text you want to copy and then use one of the hotkey(s) below.</p>
+      <ul>
+         <li>ctrl + c + number key</li>
+      </ul>
+      <p>Paste Binded Text - use one of the hotkey(s) below.</p>
+      <ul>
+         <li>ctrl + b + number key</li>
+         <li>Use function keys fn13 - fn22 to paste text from numbers 0 - 9 respectively.</li>
+      </ul>
+      <h2>IMPORTANT:</h2>
+      <P>This window must stay open to use the CopyPasteBind functionality, but feel free to minimize it.</P>
+   </div>
+<br>
+</body>
+
+</html>

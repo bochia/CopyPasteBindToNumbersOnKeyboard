@@ -1,0 +1,9 @@
+CODE FOR STOPPING PROGRAM BUT IT'S NOT WORKING
+
+# def stopProgram():
+#     print("stopProgram was hit")
+#     sys.exit(1)
+
+# win.getElementById("stopButton").addEventListener("click", Neutron.event(stopProgram))
+
+<button id="stopButton">Stop Program</button>
