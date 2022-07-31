@@ -95,19 +95,6 @@ copy_bind_pairs = {
 CreateHotKeys(copy_bind_pairs)
 
 try:
-<<<<<<< HEAD
-    # Create instructions to display in dialog box.
-    msg = "HOW TO USE:\n"
-    msg += "-----------\n\n"
-    msg += "Bind Text To Number - highlight the text you want to copy and then use one of the hotkeys below.\n\n"
-    msg += " * ctrl + c + {number key}" + "\n\n"
-    msg += "Paste Binded Text - use one of the hotkeys below.\n\n"
-    msg += " * ctrl + b + {number key}\n\n"
-    msg += " * Use function keys fn13 - fn22 to paste text from numbers 0 - 9 respectively.\n\n"
-    msg += "IMPORTANT:\n"
-    msg += "----------\n"
-    msg += "This window must stay open to use the CopyPasteBind functionality, but feel free to minimize it."
-=======
     css_filename = "style.css"
     css_filepath = EMPTY_STR
     html_filename = "MainWindow.html"
@@ -139,7 +126,6 @@ try:
     all_page_Ids = [MAIN_PAGE_ID, HOW_TO_USE_PAGE_ID, CONFIGURATION_PAGE_ID]
     
     win.show()
->>>>>>> feature/Create_GUI_from_HTML_CSS
 
     sys.exit(0)
 
