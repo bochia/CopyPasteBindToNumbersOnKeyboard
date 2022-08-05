@@ -12,3 +12,7 @@
 [] Once app starts looking good put it your linkedin. Make sure to test installation process on maybe different systems.
 [] Put settings file for you razor naga pro mouse in your github.
 [] Add serilog logging.
+
+
+Other:
+Create a desktop color picker where you can take screenshot right in the app. Then you dont need to upload pictures. Make an extension for it.
