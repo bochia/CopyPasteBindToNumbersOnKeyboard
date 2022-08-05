@@ -1,4 +1,5 @@
 # To Do / Incomming Updates
+[] Add an icon for your app. 
 [] Add a copy button next to every field with typical icon.
 [] Add ability to make certain fields "masked" incase some of your fields are passwords or login info. 
     [] Make button have a tooltips "Hide field" and "Show field" and eye icons like password fields in the web.
