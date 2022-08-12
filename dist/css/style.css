@@ -1,0 +1,16 @@
+span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+
+.textAreaContainer {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    width: 70%;
+}
+
+textarea {  
+    width: 100%;
+}
