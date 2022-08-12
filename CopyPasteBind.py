@@ -5,6 +5,7 @@ import easygui
 import sys
 import Neutron
 import os
+import json
 
 
 ########### Functions ########### 
@@ -29,6 +30,19 @@ def CreateHotKeys(copy_bind_pairs):
 
 def hide_page(page):
     page.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_NONE)
+
+def load_saved_values():
+    
+    if window_has_started:
+        # load saved values from settings file
+        with open("settings\settings.json") as json_file:
+            settings = json.load(json_file)
+            savedValues = settings["savedValues"]
+
+            #get value from settings and populate on page.
+            for numberKey in range (0, 10):
+                savedValue = savedValues[f"{numberKey}"]
+                win.getElementById(f"bindValue{numberKey}").innerHTML = savedValue
 
 def openPage_configuration():
     show_page_and_hide_all_others(CONFIGURATION_PAGE_ID)
@@ -80,21 +94,22 @@ def show_page_and_hide_all_others(page_Id):
 
 # dictionary used to save values for copy binded text.
 copy_bind_pairs = {
-    0:EMPTY_STR,
-    1:EMPTY_STR,
-    2:EMPTY_STR,
-    3:EMPTY_STR,
-    4:EMPTY_STR,
-    5:EMPTY_STR,
-    6:EMPTY_STR,
-    7:EMPTY_STR,
-    8:EMPTY_STR,
-    9:EMPTY_STR
+    0: EMPTY_STR,
+    1: EMPTY_STR,
+    2: EMPTY_STR,
+    3: EMPTY_STR,
+    4: EMPTY_STR,
+    5: EMPTY_STR,
+    6: EMPTY_STR,
+    7: EMPTY_STR,
+    8: EMPTY_STR,
+    9: EMPTY_STR
 }
 
 CreateHotKeys(copy_bind_pairs)
 
 try:
+    window_has_started = False
     css_filename = "style.css"
     css_filepath = EMPTY_STR
     html_filename = "MainWindow.html"
@@ -106,7 +121,6 @@ try:
     css_filepath = resource_path(css_filepath)
     html_filepath = resource_path(html_filepath)
 
-    print("mdae it here asdfasdf")
     print(css_filepath)
     print(html_filepath)
 
@@ -114,10 +128,16 @@ try:
 
     win.display(file=html_filepath)
 
+    # Menu buttons
     win.getElementById("mainMenuButton").addEventListener("click", Neutron.event(openPage_main))
     win.getElementById("howToUsePageMenuButton").addEventListener("click", Neutron.event(openPage_how_to_use))
     win.getElementById("configurationMenuButton").addEventListener("click", Neutron.event(openPage_configuration))
+
+    # Main page buttons
     win.getElementById("resetValues").addEventListener("click", Neutron.event(reset_values))
+
+    # Configuration page buttons
+    win.getElementById("loadSavedValues").addEventListener("click", Neutron.event(load_saved_values))
 
     mainPage = win.getElementById(MAIN_PAGE_ID)
     howToUsePage = win.getElementById(HOW_TO_USE_PAGE_ID)
@@ -125,6 +145,7 @@ try:
 
     all_page_Ids = [MAIN_PAGE_ID, HOW_TO_USE_PAGE_ID, CONFIGURATION_PAGE_ID]
     
+    window_has_started = True
     win.show()
 
     sys.exit(0)
