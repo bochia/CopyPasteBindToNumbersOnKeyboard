@@ -42,6 +42,7 @@ def load_saved_values():
             #get value from settings and populate on page.
             for numberKey in range (0, 10):
                 savedValue = savedValues[f"{numberKey}"]
+                copy_bind_pairs[numberKey] = savedValue
                 win.getElementById(f"bindValue{numberKey}").innerHTML = savedValue
 
 def openPage_configuration():
