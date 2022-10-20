@@ -6,49 +6,50 @@
 </head>
 
 <body>
-   <div class="tabs">
-      <button id="mainMenuButton" class="tablinks">Main</button>
-      <button id="configurationMenuButton" class="tablinks">Configuration</button>
-      <button id="howToUsePageMenuButton" class="tablinks">How To Use</button>
+   <div class="tabsBar ">
+      <button id="mainMenuButton" class="menuButton">Main</button>
+      <button id="configurationMenuButton" class="menuButton">Configuration</button>
+      <button id="howToUsePageMenuButton" class="menuButton">How To Use</button>
    </div>
 
-   <div id="mainPage" class="tabcontent" style="display: block">
-      <h1>Binded Values:</h1>
-      <p>View values that are currently binded to number keys.</p>
-      <button id="resetValues">Reset Values</button>
-      <p>NOTE - dont copy text directly from within these textboxes, always use hotkeys to get text. These textareas are only for viewing - text has had newline characters removed.</p>
-      <div class="divForTextAreas"><span class="span">0:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue0" class="textarea" readonly></textarea></div>
-      <div class="divForTextAreas"><span class="span">1:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue1" class="textarea" readonly></textarea></div>
-      <div class="divForTextAreas"><span class="span">2:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue2" class="textarea" readonly></textarea></div>
-      <div class="divForTextAreas"><span class="span">3:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue3" class="textarea" readonly></textarea></div>
-      <div class="divForTextAreas"><span class="span">4:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue4" class="textarea" readonly></textarea></div>
-      <div class="divForTextAreas"><span class="span">5:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue5" class="textarea" readonly></textarea></div>
-      <div class="divForTextAreas"><span class="span">6:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue6" class="textarea" readonly></textarea></div>     
-      <div class="divForTextAreas"><span class="span">7:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue7" class="textarea" readonly></textarea></div>     
-      <div class="divForTextAreas"><span class="span">8:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue8" class="textarea" readonly></textarea></div>
-      <div class="divForTextAreas"><span class="span">9:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue9" class="textarea" readonly></textarea></div>  
+   <div id="innerBody">
+         <div id="mainPage" class="tabcontent" style="display: block">
+         <h1>Binded Values:</h1>
+         <p>View values that are currently binded to number keys.</p>
+         <button id="resetValues">Reset Values</button><br><br>
+         <div class="divForTextAreas"><span class="span">0:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue0" class="textarea" readonly></textarea></div>
+         <div class="divForTextAreas"><span class="span">1:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue1" class="textarea" readonly></textarea></div>
+         <div class="divForTextAreas"><span class="span">2:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue2" class="textarea" readonly></textarea></div>
+         <div class="divForTextAreas"><span class="span">3:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue3" class="textarea" readonly></textarea></div>
+         <div class="divForTextAreas"><span class="span">4:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue4" class="textarea" readonly></textarea></div>
+         <div class="divForTextAreas"><span class="span">5:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue5" class="textarea" readonly></textarea></div>
+         <div class="divForTextAreas"><span class="span">6:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue6" class="textarea" readonly></textarea></div>     
+         <div class="divForTextAreas"><span class="span">7:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue7" class="textarea" readonly></textarea></div>     
+         <div class="divForTextAreas"><span class="span">8:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue8" class="textarea" readonly></textarea></div>
+         <div class="divForTextAreas"><span class="span">9:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue9" class="textarea" readonly></textarea></div>  
+         <p>NOTE - dont copy text directly from within these textboxes, always use hotkeys to get text. These textareas are only for viewing - text has had newline characters removed.</p>
+      </div>
+   
+      <div id="configurationPage" class="tabcontent" style="display: none">
+         <br>
+         <button id="loadSavedValues">Load Saved Values</button>
+      </div>
+   
+      <div id="howToUsePage" class="tabcontent" style="display: none">
+         <h1>HOW TO USE:</h1>
+         <p>Bind Text To Number - highlight the text you want to copy and then use one of the hotkey(s) below.</p>
+         <ul>
+            <li>ctrl + c + number key</li>
+         </ul>
+         <p>Paste Binded Text - use one of the hotkey(s) below.</p>
+         <ul>
+            <li>ctrl + b + number key</li>
+            <li>Use function keys fn13 - fn22 to paste text from numbers 0 - 9 respectively.</li>
+         </ul>
+         <h2>IMPORTANT:</h2>
+         <P>This window must stay open to use the CopyPasteBind functionality, but feel free to minimize it.</P>
+      </div>
+   <br>
    </div>
-
-   <div id="configurationPage" class="tabcontent" style="display: none">
-      <br>
-      <button id="loadSavedValues">Load Saved Values</button>
-   </div>
-
-   <div id="howToUsePage" class="tabcontent" style="display: none">
-      <h1>HOW TO USE:</h1>
-      <p>Bind Text To Number - highlight the text you want to copy and then use one of the hotkey(s) below.</p>
-      <ul>
-         <li>ctrl + c + number key</li>
-      </ul>
-      <p>Paste Binded Text - use one of the hotkey(s) below.</p>
-      <ul>
-         <li>ctrl + b + number key</li>
-         <li>Use function keys fn13 - fn22 to paste text from numbers 0 - 9 respectively.</li>
-      </ul>
-      <h2>IMPORTANT:</h2>
-      <P>This window must stay open to use the CopyPasteBind functionality, but feel free to minimize it.</P>
-   </div>
-<br>
 </body>
-
 </html>
