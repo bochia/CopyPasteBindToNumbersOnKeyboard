@@ -16,7 +16,7 @@ def BindCopiedTextToNumberKey(copy_bind_values, numberKey):
     copy_bind_values[numberKey] = value
 
     # update UI
-    win.getElementById(f"{BINDED_VALUE_TEXTBOX_PREFIX}{numberKey}").innerHTML = value.replace('\n', ' ').replace('\r', '') # need to remove new line characters otherwise wont work.
+    win.getElementById(f"{BINDED_VALUE_TEXTBOX_PREFIX}{numberKey}").innerHTML = remove_newline_and_return_characters(value)
 
 def CreateHotKey(copy_bind_pairs, numberKey):
     hotkey = f"ctrl+c+{numberKey}"
@@ -33,7 +33,7 @@ def CreateHotKey(copy_bind_pairs, numberKey):
     PrintHotKeyAdded(hotkey)
 
 def CreateHotKeys(copy_bind_pairs):
-    print("Attempting to create hotkeys.")
+    print("Attempting to create hotkeys...")
 
     for numberKey in range(0,10):
         CreateHotKey(copy_bind_pairs, numberKey)
@@ -44,7 +44,7 @@ def hide_page(page):
     page.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_NONE)
 
 def load_saved_values():
-    print("Attempting to load saved values.")
+    print("Attempting to load saved values...")
 
     if window_has_started:
         # load saved values from settings file
@@ -56,7 +56,8 @@ def load_saved_values():
             for numberKey in range (0, 10):
                 savedValue = savedValues[f"{numberKey}"]
                 copy_bind_pairs[numberKey] = savedValue
-                win.getElementById(f"bindValue{numberKey}").innerHTML = savedValue
+                win.getElementById(f"bindValue{numberKey}").innerHTML = remove_newline_and_return_characters(savedValue)
+
     print("Successfully loaded saved values.")
 
 def openPage_how_to_use():
@@ -74,8 +75,13 @@ def PasteBindedValue(copy_bind_pairs, numberKey):
 def PrintHotKeyAdded(hotkey):
     print(f"Added hotkey {hotkey}")
 
+# need to remove newline characters before populating text areas otherwise text wont be visible in text area.
+def remove_newline_and_return_characters(string):
+    string = string.replace('\n', ' ').replace('\r', '')
+    return string
+
 def reset_values():
-    print("Attempting to reset hotkeys and values.")
+    print("Attempting to reset hotkeys and values...")
 
     print("Reseting all values.")
     for numKey in range(0, 10):
@@ -102,6 +108,37 @@ def resource_path(relative_path):
     except Exception:
         base_path = os.path.abspath(".")
         return os.path.join(base_path, relative_path)
+
+def save_values():
+    print("Attempting to save values...")
+
+    try:
+        filePath = "settings\settings.json"
+        savedValuesKey = "savedValues"
+        oldSettings = ""
+        newSettings = ""
+
+        if window_has_started:
+            # load saved values from settings file
+            with open(filePath) as json_file:
+                oldSettings = json.load(json_file)
+                savedValues = oldSettings[savedValuesKey]
+
+                #get value from settings and populate on page.
+                for numberKey in range (0, 10):
+                    newSavedValue = copy_bind_pairs[numberKey]
+                    savedValues[f"{numberKey}"] = newSavedValue 
+
+                oldSettings[savedValuesKey] = savedValues
+                newSettings = oldSettings
+            
+            with open(filePath, "w") as json_file:
+                json.dump(newSettings, json_file) 
+
+    except Exception as ex:
+        print(f"Exception - {ex}")
+                
+    print("Successfully saved values.")
 
 def show_page(page):
     page.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK)
@@ -163,6 +200,7 @@ try:
     # Main page buttons
     win.getElementById("resetValues").addEventListener("click", Neutron.event(reset_values))
     win.getElementById("loadSavedValues").addEventListener("click", Neutron.event(load_saved_values))
+    win.getElementById("saveValues").addEventListener("click", Neutron.event(save_values))
 
     mainPage = win.getElementById(MAIN_PAGE_ID)
     howToUsePage = win.getElementById(HOW_TO_USE_PAGE_ID)
@@ -174,5 +212,5 @@ try:
 
     sys.exit(0)
 
-except Exception as e:
-    easygui.msgbox("Oops something went wrong...\n\nException:\n" + str(e))
+except Exception as ex:
+    easygui.msgbox("Oops something went wrong...\n\nException:\n" + str(ex))

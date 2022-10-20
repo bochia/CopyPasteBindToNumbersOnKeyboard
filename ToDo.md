@@ -12,6 +12,7 @@
 [] Put settings file for you razor naga pro mouse in your github.
 [] Add serilog logging.
 [] Refactor copy_bind_pairs and copy_bind_values. Make sure to use the global variable so that events can have access to it. Look into how to do global variables correctly. Is it even possible?
+[] Need to add try except blocks to all methods.
 
 
 Other:
