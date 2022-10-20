@@ -1,16 +1,59 @@
+body {
+background-color: #1e1e1e;
+color: white;
+margin: 0;
+}
+
+#innerBody {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
 span {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
   }
+ 
+.tabsBar {
+background-color: #333333;
+}
 
 .textAreaContainer {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
     width: 70%;
+user-select:none;
 }
 
-textarea {  
-    width: 100%;
+textarea {
+background-color: #333333;
+width: 100%;
+color: white;  
+user-select:none;
+
 }
+
+textarea:focus{
+outline: none !important;
+    border:2px solid #3368ba;
+}
+
+.menuButton {
+height: 25px;
+background-color: transparent;
+color: white;
+border: none;
+outline: none;
+margin: 0;
+}
+
+.menuButton:hover{
+background-color: #505050;
+}
+
+.menuButton:focus{
+background-color: #3368ba;
+}
+

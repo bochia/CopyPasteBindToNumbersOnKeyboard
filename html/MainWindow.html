@@ -8,7 +8,6 @@
 <body>
    <div class="tabsBar ">
       <button id="mainMenuButton" class="menuButton">Main</button>
-      <button id="configurationMenuButton" class="menuButton">Configuration</button>
       <button id="howToUsePageMenuButton" class="menuButton">How To Use</button>
    </div>
 
@@ -16,7 +15,8 @@
          <div id="mainPage" class="tabcontent" style="display: block">
          <h1>Binded Values:</h1>
          <p>View values that are currently binded to number keys.</p>
-         <button id="resetValues">Reset Values</button><br><br>
+         <button id="resetValues">Reset Values</button>
+         <button id="loadSavedValues">Load Saved Values</button><br><br>
          <div class="divForTextAreas"><span class="span">0:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue0" class="textarea" readonly></textarea></div>
          <div class="divForTextAreas"><span class="span">1:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue1" class="textarea" readonly></textarea></div>
          <div class="divForTextAreas"><span class="span">2:&nbsp;&nbsp;</span><span class="textAreaContainer"><textarea id="bindValue2" class="textarea" readonly></textarea></div>
@@ -30,10 +30,9 @@
          <p>NOTE - dont copy text directly from within these textboxes, always use hotkeys to get text. These textareas are only for viewing - text has had newline characters removed.</p>
       </div>
    
-      <div id="configurationPage" class="tabcontent" style="display: none">
+      <!-- <div id="configurationPage" class="tabcontent" style="display: none">
          <br>
-         <button id="loadSavedValues">Load Saved Values</button>
-      </div>
+      </div> -->
    
       <div id="howToUsePage" class="tabcontent" style="display: none">
          <h1>HOW TO USE:</h1>

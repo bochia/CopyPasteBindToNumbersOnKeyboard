@@ -1,4 +1,4 @@
-from CopyBindPasteConstants import BINDED_VALUE_TEXTBOX_PREFIX, CONFIGURATION_PAGE_ID, CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK, CSS_DISPLAY_NONE, DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS, EMPTY_STR, HOW_TO_USE_PAGE_ID, MAIN_PAGE_ID
+from CopyBindPasteConstants import BINDED_VALUE_TEXTBOX_PREFIX, CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_BLOCK, CSS_DISPLAY_NONE, DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS, EMPTY_STR, HOW_TO_USE_PAGE_ID, MAIN_PAGE_ID
 import keyboard
 import pyperclip
 import easygui
@@ -19,20 +19,33 @@ def BindCopiedTextToNumberKey(copy_bind_values, numberKey):
     win.getElementById(f"{BINDED_VALUE_TEXTBOX_PREFIX}{numberKey}").innerHTML = value.replace('\n', ' ').replace('\r', '') # need to remove new line characters otherwise wont work.
 
 def CreateHotKey(copy_bind_pairs, numberKey):
-    keyboard.add_hotkey(f"ctrl+c+{numberKey}", BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey))
-    keyboard.add_hotkey(f"ctrl+b+{numberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
+    hotkey = f"ctrl+c+{numberKey}"
+    keyboard.add_hotkey(hotkey, BindCopiedTextToNumberKey, args=(copy_bind_pairs, numberKey))
+    PrintHotKeyAdded(hotkey)
+
+    hotkey = f"ctrl+b+{numberKey}"
+    keyboard.add_hotkey(hotkey, PasteBindedValue, args=(copy_bind_pairs, numberKey))
+    PrintHotKeyAdded(hotkey)
+
     functionNumberKey = numberKey + DIFFERENCE_BETWEEN_FUNCTION_KEY_AND_KEYBOARD_NUMBERS
-    keyboard.add_hotkey(f"f{functionNumberKey}", PasteBindedValue, args=(copy_bind_pairs, numberKey))
+    hotkey = f"f{functionNumberKey}"
+    keyboard.add_hotkey(hotkey, PasteBindedValue, args=(copy_bind_pairs, numberKey))
+    PrintHotKeyAdded(hotkey)
 
 def CreateHotKeys(copy_bind_pairs):
+    print("Attempting to create hotkeys.")
+
     for numberKey in range(0,10):
-        CreateHotKey(copy_bind_pairs, numberKey)  
+        CreateHotKey(copy_bind_pairs, numberKey)
+    
+    print("Successfully created all hotkeys.")
 
 def hide_page(page):
     page.setAttribute(CSS_STYLE_ATTRIBUTE, CSS_DISPLAY_NONE)
 
 def load_saved_values():
-    
+    print("Attempting to load saved values.")
+
     if window_has_started:
         # load saved values from settings file
         with open("settings\settings.json") as json_file:
@@ -44,27 +57,38 @@ def load_saved_values():
                 savedValue = savedValues[f"{numberKey}"]
                 copy_bind_pairs[numberKey] = savedValue
                 win.getElementById(f"bindValue{numberKey}").innerHTML = savedValue
-
-def openPage_configuration():
-    show_page_and_hide_all_others(CONFIGURATION_PAGE_ID)
-    print("Made it to openPage_configuration.")
+    print("Successfully loaded saved values.")
 
 def openPage_how_to_use():
     show_page_and_hide_all_others(HOW_TO_USE_PAGE_ID)
-    print("Made it to openPage_how_to_use")
+    print("Opened Main Page.")
 
 def openPage_main():
     show_page_and_hide_all_others(MAIN_PAGE_ID)
-    print("Made it to openPage_main.")
+    print("Opened Main Page.")
 
 def PasteBindedValue(copy_bind_pairs, numberKey):
     pyperclip.copy(copy_bind_pairs[numberKey])
     keyboard.press_and_release("ctrl+v")    
 
+def PrintHotKeyAdded(hotkey):
+    print(f"Added hotkey {hotkey}")
+
 def reset_values():
+    print("Attempting to reset hotkeys and values.")
+
+    print("Reseting all values.")
     for numKey in range(0, 10):
         copy_bind_pairs[numKey] = EMPTY_STR
         win.getElementById(f"{BINDED_VALUE_TEXTBOX_PREFIX}{numKey}").innerHTML = EMPTY_STR
+
+    # Remove and redadd all hotkeys. Workaround for hotkeys not working after logging out and relogging in on windows.
+    print("Removing all hotkeys")
+    keyboard.unhook_all_hotkeys()
+
+    CreateHotKeys(copy_bind_pairs)
+
+    print("Successfully reset hotkeys and values.")    
 
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
@@ -107,6 +131,9 @@ copy_bind_pairs = {
     9: EMPTY_STR
 }
 
+# stores hotkeys aliases 
+hotkey_aliases = []
+
 CreateHotKeys(copy_bind_pairs)
 
 try:
@@ -132,19 +159,15 @@ try:
     # Menu buttons
     win.getElementById("mainMenuButton").addEventListener("click", Neutron.event(openPage_main))
     win.getElementById("howToUsePageMenuButton").addEventListener("click", Neutron.event(openPage_how_to_use))
-    win.getElementById("configurationMenuButton").addEventListener("click", Neutron.event(openPage_configuration))
 
     # Main page buttons
     win.getElementById("resetValues").addEventListener("click", Neutron.event(reset_values))
-
-    # Configuration page buttons
     win.getElementById("loadSavedValues").addEventListener("click", Neutron.event(load_saved_values))
 
     mainPage = win.getElementById(MAIN_PAGE_ID)
     howToUsePage = win.getElementById(HOW_TO_USE_PAGE_ID)
-    configurationPage = win.getElementById(CONFIGURATION_PAGE_ID)
 
-    all_page_Ids = [MAIN_PAGE_ID, HOW_TO_USE_PAGE_ID, CONFIGURATION_PAGE_ID]
+    all_page_Ids = [MAIN_PAGE_ID, HOW_TO_USE_PAGE_ID]
     
     window_has_started = True
     win.show()
