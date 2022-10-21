@@ -2,6 +2,7 @@
 Simple desktop app that allows user to save copied text to numbers on keyboard. User can then use hotkey to paste saved values later on. 
 
 ![CopyPasteBindScreenshot](images/CopyPasteBindScreenshot.png)
+![CopyPasteBindScreenshot](images/HowToUsePageScreenshot.png)
 
 ### Prerequisites:
 - Python 3.6.5 or similar. (So Windows/Mac/Linux can edit source code, but python doesn't need to be installed to run pre built executable.)
